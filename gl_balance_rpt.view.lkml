@@ -41,9 +41,9 @@ view: gl_balance_rpt {
   measure: act_net_amt {
     label: "Actual Balance$"
     group_label: "Actual"
-    description: "Actual Balance $"
+    description: "Actual Balance (net of Debits and Credits) $"
     type: number
-    sql: CASE WHEN gl_account_dm.s2_type_name = 'Revenue' THEN ${act_net_cr_amt}-${act_net_dr_amt} ELSE ${act_net_dr_amt}-${act_net_cr_amt} END ;;
+    sql: ${act_net_dr_amt}+${act_net_cr_amt} ;;
     drill_fields: [act_net_dr_amt, act_net_cr_amt]
     value_format_name: usd_0
   }
@@ -69,9 +69,9 @@ view: gl_balance_rpt {
   measure: bgt_net_amt {
     label: "Budget Balance$"
     group_label: "Budget"
-    description: "Budget Balance $"
+    description: "Budget Balance (net of Debits and Credits) $"
     type: number
-    sql: CASE WHEN gl_account_dm.s2_type_name = 'Revenue' THEN ${bgt_net_cr_amt}-${bgt_net_dr_amt} ELSE ${bgt_net_dr_amt}-${bgt_net_cr_amt} END ;;
+    sql: ${bgt_net_dr_amt}+${bgt_net_cr_amt} ;;
     value_format_name: usd_0
   }
 
@@ -96,10 +96,10 @@ view: gl_balance_rpt {
   measure: fcst_net_amt {
     label: "Forecast Balance$"
     group_label: "Forecast"
-    description: "Forecast Balance $"
+    description: "Forecast Balance (net of Debits and Credits) $"
     type: number
     drill_fields: [  ]
-    sql: CASE WHEN gl_account_dm.s2_type_name = 'Revenue' THEN ${fcst_net_cr_amt}-${fcst_net_dr_amt} ELSE ${fcst_net_dr_amt}-${fcst_net_cr_amt} END ;;
+    sql: ${fcst_net_dr_amt}+${fcst_net_cr_amt} ;;
     value_format_name: usd_0
   }
 
@@ -124,9 +124,9 @@ view: gl_balance_rpt {
   measure: prjc_net_amt {
     label: "Projected Balance$"
     group_label: "Projected"
-    description: "Projected Balance $"
+    description: "Projected Balance (net of Debits and Credits) $"
     type: number
-    sql: CASE WHEN gl_account_dm.s2_type_name = 'Revenue' THEN ${prjc_net_cr_amt}-${prjc_net_dr_amt} ELSE ${prjc_net_dr_amt}-${prjc_net_cr_amt} END ;;
+    sql: ${prjc_net_dr_amt}-${prjc_net_cr_amt} ;;
     value_format_name: usd_0
   }
 
