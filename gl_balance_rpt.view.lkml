@@ -66,14 +66,14 @@ view: gl_balance_rpt {
     value_format_name: usd_0
   }
 
-#   measure: bgt_net_amt {
-#     label: "Budget Balance$"
-#     group_label: "Budget"
-#     description: "Budget Balance $"
-#     type: number
-#     sql: CASE WHEN ${TABLE}.s2_type_name = 'Revenue' THEN ${bgt_net_cr_amt}-${bgt_net_dr_amt} ELSE ${bgt_net_dr_amt}-${bgt_net_cr_amt} END ;;
-#     value_format_name: usd_0
-#   }
+  measure: bgt_net_amt {
+    label: "Budget Balance$"
+    group_label: "Budget"
+    description: "Budget Balance $"
+    type: number
+    sql: CASE WHEN gl_account_dm.s2_type_name = 'Revenue' THEN ${bgt_net_cr_amt}-${bgt_net_dr_amt} ELSE ${bgt_net_dr_amt}-${bgt_net_cr_amt} END ;;
+    value_format_name: usd_0
+  }
 
   measure: fcst_net_dr_amt {
     label: "Forecast Debit$"
@@ -93,15 +93,15 @@ view: gl_balance_rpt {
     value_format_name: usd_0
   }
 
-#   measure: fcst_net_amt {
-#     label: "Forecast Balance$"
-#     group_label: "Forecast"
-#     description: "Forecast Balance $"
-#     type: number
-#     drill_fields: [  ]
-#     sql: CASE WHEN ${TABLE}.s2_type_name = 'Revenue' THEN ${fcst_net_cr_amt}-${fcst_net_dr_amt} ELSE ${fcst_net_dr_amt}-${fcst_net_cr_amt} END ;;
-#     value_format_name: usd_0
-#   }
+  measure: fcst_net_amt {
+    label: "Forecast Balance$"
+    group_label: "Forecast"
+    description: "Forecast Balance $"
+    type: number
+    drill_fields: [  ]
+    sql: CASE WHEN gl_account_dm.s2_type_name = 'Revenue' THEN ${fcst_net_cr_amt}-${fcst_net_dr_amt} ELSE ${fcst_net_dr_amt}-${fcst_net_cr_amt} END ;;
+    value_format_name: usd_0
+  }
 
   measure: prjc_net_dr_amt {
     label: "Projected Debit$"
@@ -121,14 +121,14 @@ view: gl_balance_rpt {
     value_format_name: usd_0
   }
 
-#   measure: prjc_net_amt {
-#     label: "Projected Balance$"
-#     group_label: "Projected"
-#     description: "Projected Balance $"
-#     type: number
-#     sql: CASE WHEN ${TABLE}.s2_type_name = 'Revenue' THEN ${prjc_net_cr_amt}-${prjc_net_dr_amt} ELSE ${prjc_net_dr_amt}-${prjc_net_cr_amt} END ;;
-#     value_format_name: usd_0
-#   }
+  measure: prjc_net_amt {
+    label: "Projected Balance$"
+    group_label: "Projected"
+    description: "Projected Balance $"
+    type: number
+    sql: CASE WHEN gl_account_dm.s2_type_name = 'Revenue' THEN ${prjc_net_cr_amt}-${prjc_net_dr_amt} ELSE ${prjc_net_dr_amt}-${prjc_net_cr_amt} END ;;
+    value_format_name: usd_0
+  }
 
 
 }
