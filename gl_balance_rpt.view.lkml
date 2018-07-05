@@ -1,45 +1,5 @@
 view: gl_balance_rpt {
-  derived_table: {
-    sql: select
-          r.DATE_SID,
-          r.PROPERTY_KEY,
-          r.ACT_NET_DR_AMT,
-          r.ACT_NET_CR_AMT,
-          r.BGT_NET_DR_AMT,
-          r.BGT_NET_CR_AMT,
-          r.FCST_NET_DR_AMT,
-          r.FCST_NET_CR_AMT,
-          r.PRJC_NET_DR_AMT,
-          r.PRJC_NET_CR_AMT,
-
-          a.GL_ACCOUNT_SID,
-          a.SEGMENT1_CD,
-          a.SEGMENT2_CD,
-          a.SEGMENT3_CD,
-          a.SEGMENT4_CD,
-          a.SEGMENT5_CD,
-          a.SEG1_NAME,
-          a.SEG2_OUTLET_NAME,
-          a.SEG2_OUTLET_TYPE_NAME,
-          a.SEG2_DEPARTMENT_NAME,
-          a.SEG2_SUBDEPARTMENT_NAME,
-          a.SEG3_CLASS_NAME,
-          a.SEG3_SUBCLASS_NAME,
-          a.SEG3_TYPE_CD,
-          a.SEG4_NAME,
-          a.SEG5_NAME,
-          a.S2_TYPE_NAME,
-          a.S2_CLASS_NAME,
-          a.S2_SUBCLASS_NAME,
-          a.S3_TYPE_NAME,
-          a.S3_CLASS_NAME,
-          a.S3_SUBCLASS_NAME,
-          a.DW_LOAD_DT,
-          a.DW_UPDATE_DT
-       from
-          PEDW.FACT.GL_BALANCE_RPT r
-          JOIN PEDW.FACT.GL_ACCOUNT_DM a ON a.gl_account_sid = r.gl_account_sid ;;
-  }
+  sql_table_name: pedw.fact.gl_balance_rpt;;
 
   dimension: date_sid {
     type: number
