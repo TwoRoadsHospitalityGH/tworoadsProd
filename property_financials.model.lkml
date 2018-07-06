@@ -6,11 +6,11 @@ include: "*.dashboard"    # include all the dashboards
 explore: gl_balance_rpt {
   persist_for: "0 minutes"
 
-  label: "Property Financials"
-  access_filter: {
-    field: property_dm.property_key
-    user_attribute: property_access
-  }
+#   label: "Property Financials"
+#   access_filter: {
+#     field: property_dm.property_key
+#     user_attribute: property_access
+#   }
   view_label: "1) Measures"
 
 
