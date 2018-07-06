@@ -130,6 +130,13 @@ view: gl_account_dm {
     drill_fields: [gl_account_ds*,property_dm.property_ds*]
   }
 
+  dimension: account_type{
+    label: "Account Type"
+    type: string
+    sql: ${TABLE}.account_type_cd ;;
+  }
+
+
   # ----- Sets of fields for drilling ------
   set: gl_account_ds {
     fields: [
