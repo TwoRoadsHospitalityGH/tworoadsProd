@@ -43,7 +43,7 @@ view: gl_balance_rpt {
     group_label: "Actual"
     description: "Actual Balance (net of Debits and Credits) $"
     type: number
-    sql: ${act_net_dr_amt}+${act_net_cr_amt} ;;
+    sql: ${act_net_cr_amt} - ${act_net_dr_amt} ;;
     drill_fields: [act_net_dr_amt, act_net_cr_amt]
     value_format_name: usd_0
   }
@@ -71,7 +71,7 @@ view: gl_balance_rpt {
     group_label: "Budget"
     description: "Budget Balance (net of Debits and Credits) $"
     type: number
-    sql: ${bgt_net_dr_amt}+${bgt_net_cr_amt} ;;
+    sql: ${bgt_net_cr_amt} - ${bgt_net_dr_amt} ;;
     value_format_name: usd_0
   }
 
@@ -99,7 +99,7 @@ view: gl_balance_rpt {
     description: "Forecast Balance (net of Debits and Credits) $"
     type: number
     drill_fields: [  ]
-    sql: ${fcst_net_dr_amt}+${fcst_net_cr_amt} ;;
+    sql: ${fcst_net_cr_amt} - ${fcst_net_dr_amt} ;;
     value_format_name: usd_0
   }
 
@@ -126,7 +126,7 @@ view: gl_balance_rpt {
     group_label: "Projected"
     description: "Projected Balance (net of Debits and Credits) $"
     type: number
-    sql: ${prjc_net_dr_amt}-${prjc_net_cr_amt} ;;
+    sql: ${prjc_net_cr_amt} - ${prjc_net_dr_amt} ;;
     value_format_name: usd_0
   }
 
