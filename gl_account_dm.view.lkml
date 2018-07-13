@@ -22,11 +22,13 @@ view: gl_account_dm {
   }
 
   dimension: segment2_cd {
+    label: "Department"
     type: string
     sql: ${TABLE}.SEGMENT2_CD ;;
   }
 
   dimension: segment3_cd {
+    label: "Account"
     type: string
     sql: ${TABLE}.SEGMENT3_CD ;;
   }
@@ -41,47 +43,40 @@ view: gl_account_dm {
     sql: ${TABLE}.SEGMENT5_CD ;;
   }
 
-  dimension: s2_type_name {
-    label: "Department"
+  dimension: s2_class_name {
+    label: "Department Name"
     type: string
-    sql: ${TABLE}.S2_type_name ;;
+    sql: ${TABLE}.S2_class_name ;;
     drill_fields: [gl_account_ds*,property_dm.property_ds*]
   }
 
-#   dimension: s2_class_name {
-#     label: "Department Class"
-#     type: string
-#     sql: ${TABLE}.S2_class_name ;;
-#     drill_fields: [gl_account_ds*,property_dm.property_ds*]
-#   }
-#
-#   dimension: s2_subclass_name {
-#     label: "Department SubClass"
-#     type: string
-#     sql: ${TABLE}.S2_subclass_name ;;
-#     drill_fields: [gl_account_ds*,property_dm.property_ds*]
-#   }
+  dimension: s2_subclass_name {
+    label: "SubDepartment"
+    type: string
+    sql: ${TABLE}.S2_subclass_name ;;
+    drill_fields: [gl_account_ds*,property_dm.property_ds*]
+  }
 
   dimension: s3_type_name {
-    label: "Major"
+    label: "Account"
     type: string
     sql: ${TABLE}.S3_type_name ;;
     drill_fields: [gl_account_ds*,property_dm.property_ds*]
   }
 
   dimension: s3_class_name {
-    label: "Major Class"
+    label: "Account Class"
     type: string
     sql: ${TABLE}.S3_class_name ;;
     drill_fields: [gl_account_ds*,property_dm.property_ds*]
   }
 
-#   dimension: s3_subclass_name {
-#     label: "Major SubClass"
-#     type: string
-#     sql: ${TABLE}.S3_subclass_name ;;
-#     drill_fields: [gl_account_ds*,property_dm.property_ds*]
-#   }
+  dimension: s3_subclass_name {
+    label: "Account SubClass"
+    type: string
+    sql: ${TABLE}.S3_subclass_name ;;
+    drill_fields: [gl_account_ds*,property_dm.property_ds*]
+  }
 
   dimension: account_type{
     label: "Account Type"
@@ -93,7 +88,7 @@ view: gl_account_dm {
   # ----- Sets of fields for drilling ------
   set: gl_account_ds {
     fields: [
-      s2_type_name,
+      s2_class_name,
       s3_type_name
         ]
   }

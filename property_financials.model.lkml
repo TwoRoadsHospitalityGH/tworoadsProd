@@ -1,7 +1,7 @@
 connection: "edw"
 
 include: "*.view"         # include all the views
-include: "*.dashboard"    # include all the dashboards
+# include: "*.dashboard"    # include all the dashboards
 
 explore: gl_balance_rpt {
   persist_for: "0 minutes"
