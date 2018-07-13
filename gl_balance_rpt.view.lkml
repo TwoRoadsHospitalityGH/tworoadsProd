@@ -130,5 +130,12 @@ view: gl_balance_rpt {
     value_format_name: usd_0
   }
 
+#   measure: bgt_adr_amt_prev {
+#     label: "Budget ADR"
+#     description: "Budget Rooms Rev$ / Budget Rooms Occupied"
+#     view_label: "1b) % Previous"
+#     type: percent_of_previous
+#     sql: ${bgt_adr_amt} ;;
+#     value_format: "0.0\%"
 
 }
