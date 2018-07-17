@@ -39,13 +39,32 @@ view: gl_balance_rpt {
   }
 
   measure: act_net_amt {
-    label: "Actual Balance$"
+    label: "Actual Amount$"
     group_label: "Actual"
     description: "Actual Balance (net of Debits and Credits) $"
     type: number
     sql: ${act_net_cr_amt} - ${act_net_dr_amt} ;;
     drill_fields: [act_net_dr_amt, act_net_cr_amt]
     value_format_name: usd_0
+  }
+
+  measure: act_amt_prev {
+    label: "Actual Amount"
+    description: "Actual"
+    view_label: "1b) % Previous"
+    type: percent_of_previous
+    sql: ${act_net_amt}_net_amt} ;;
+    value_format: "0.0\%"
+  }
+
+  # % total
+  measure: act_amt_pttl {
+    label: "Actual Amount$"
+    description: "Actual Amount $"
+    view_label: "1c) % Total"
+    type: percent_of_total
+    sql: ${act_net_amt} ;;
+    value_format: "0.0\%"
   }
 
   measure: bgt_net_dr_amt {
@@ -67,12 +86,30 @@ view: gl_balance_rpt {
   }
 
   measure: bgt_net_amt {
-    label: "Budget Balance$"
+    label: "Budget Amount$"
     group_label: "Budget"
     description: "Budget Balance (net of Debits and Credits) $"
     type: number
     sql: ${bgt_net_cr_amt} - ${bgt_net_dr_amt} ;;
     value_format_name: usd_0
+  }
+
+  measure: bgt_amt_prev {
+    label: "Budget Amount"
+    description: "Budget"
+    view_label: "1b) % Previous"
+    type: percent_of_previous
+    sql: ${bgt_net_amt} ;;
+    value_format: "0.0\%"
+}
+
+  measure: bgt_amt_pttl {
+    label: "Budget Amount$"
+    description: "Budget Amount $"
+    view_label: "1c) % Total"
+    type: percent_of_total
+    sql: ${bgt_net_amt} ;;
+    value_format: "0.0\%"
   }
 
   measure: fcst_net_dr_amt {
@@ -94,7 +131,7 @@ view: gl_balance_rpt {
   }
 
   measure: fcst_net_amt {
-    label: "Forecast Balance$"
+    label: "Forecast Amount$"
     group_label: "Forecast"
     description: "Forecast Balance (net of Debits and Credits) $"
     type: number
@@ -102,6 +139,25 @@ view: gl_balance_rpt {
     sql: ${fcst_net_cr_amt} - ${fcst_net_dr_amt} ;;
     value_format_name: usd_0
   }
+
+  measure: fcst_amt_prev {
+    label: "Forecast Amount"
+    description: "Forecast"
+    view_label: "1b) % Previous"
+    type: percent_of_previous
+    sql: ${fcst_net_amt}_net_amt} ;;
+    value_format: "0.0\%"
+  }
+
+  measure: fcst_amt_pttl {
+    label: "Forecast Amount$"
+    description: "Forecast Amount $"
+    view_label: "1c) % Total"
+    type: percent_of_total
+    sql: ${fcst_net_amt} ;;
+    value_format: "0.0\%"
+  }
+
 
   measure: prjc_net_dr_amt {
     label: "Projected Debit$"
@@ -122,7 +178,7 @@ view: gl_balance_rpt {
   }
 
   measure: prjc_net_amt {
-    label: "Projected Balance$"
+    label: "Projected Amount$"
     group_label: "Projected"
     description: "Projected Balance (net of Debits and Credits) $"
     type: number
@@ -130,12 +186,23 @@ view: gl_balance_rpt {
     value_format_name: usd_0
   }
 
-#   measure: bgt_adr_amt_prev {
-#     label: "Budget ADR"
-#     description: "Budget Rooms Rev$ / Budget Rooms Occupied"
-#     view_label: "1b) % Previous"
-#     type: percent_of_previous
-#     sql: ${bgt_adr_amt} ;;
-#     value_format: "0.0\%"
+  measure: prjc_amt_prev {
+    label: "Projected Amount"
+    description: "Projected"
+    view_label: "1b) % Previous"
+    type: percent_of_previous
+    sql: ${prjc_net_amt}_net_amt} ;;
+    value_format: "0.0\%"
+  }
+
+  measure: prjc_amt_pttl {
+    label: "Projected Amount$"
+    description: "Projected Amount $"
+    view_label: "1c) % Total"
+    type: percent_of_total
+    sql: ${prjc_net_amt} ;;
+    value_format: "0.0\%"
+  }
+
 
 }
